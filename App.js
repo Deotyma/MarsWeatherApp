@@ -1,20 +1,33 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { StyleSheet, View, SafeAreaView, ImageBackground } from 'react-native';
+import CurrentWeather from './src/screens/CurrentWeather'
+import UpcomingWeather from './src/screens/UpcomingWeather'
+
+
+const image = require('./assets/red_planet.jpg');
 
 export default function App() {
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={styles.wrapper}>
+      <ImageBackground source={image} resizeMode="cover" style={styles.imageBackground}>
+        <View>
+            <CurrentWeather></CurrentWeather>
+            <UpcomingWeather></UpcomingWeather>
+        </View>
+      </ImageBackground>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  wrapper: {
     flex: 1,
-    backgroundColor: '#fff',
+  },
+  imageBackground: {
+    flex: 1,
+    width: '100%',
+    justifyContent: 'start',
     alignItems: 'center',
-    justifyContent: 'center',
   },
 });
